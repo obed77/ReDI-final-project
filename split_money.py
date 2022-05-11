@@ -1,26 +1,28 @@
 #Creating an empty dictionary to store users details
 person_list = {}
-
+input_activity = True
 
 #Testing condition for inputs
-while (True):
-    name = input("\nEnter a person's name: ")
-    while name == "" or name.isalpha() == False:
-        print('\nError! A name cannot be empty nor digits. Input the correct name.')
-        name = input("\nEnter a correct name: ")
+while input_activity:
+    cont = input("\nDo you want to add a person? Type Y to add or N to go ahead with the calculation: ").upper()
+    if cont == "N":
+        break
+    if cont == "Y":
 
-    amount_paid = input('\nEnter the amount paid by the person: ')
-    while amount_paid == "" or not amount_paid.isdigit():
-        print('\nError! Amount paid cannot be alphabets. Input amount in number format.')
-        amount_paid = input("\nEnter amount paid in numbers: ")
+        name = input("\nEnter a person's name: ")
+        while name == "" or name.isalpha() == False:
+            print('\nError! A name cannot be empty nor digits. Input the correct name.')
+            name = input("\nEnter a correct name: ")
 
-    person_list[name] = float(amount_paid)
+        amount_paid = input('\nEnter the amount paid by the person: ')
+        while amount_paid == "" or not amount_paid.isdigit():
+            print('\nError! Amount paid cannot be alphabets. Input amount in number format.')
+            amount_paid = input("\nEnter amount paid in numbers: ")
 
-    cont = input("\nDo you want to add another person? Type Y to add or N to go ahead with the calculation: ")
+        person_list[name] = float(amount_paid)
 
-    if cont == "N" :
-
-        break;
+    if cont != "Y" or cont != "N":
+        input_activity = True
 
 #Displaying all members in a group and amount entered per user
 print("\nThe group: ",person_list)
