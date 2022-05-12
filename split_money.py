@@ -4,7 +4,8 @@ input_activity = True
 
 #Testing condition for inputs
 while input_activity:
-    cont = input("\nDo you want to add a person? Type Y to add or N to go ahead with the calculation: ").upper()
+    cont = input("\nDo you want to add a person?\
+        \nType Y to add or N to go ahead with the calculation or end the program: ").upper()
     if cont == "N":
         break
     if cont == "Y":
@@ -24,29 +25,35 @@ while input_activity:
     if cont != "Y" or cont != "N":
         input_activity = True
 
-#Displaying all members in a group and amount entered per user
-print("\nThe group: ",person_list)
+if person_list == {}:
+    print("You did not enter any name and amount.\
+        \nTry again if you want to add an input.\
+        \nThank you for using Sabed Money Split.")
 
-group_total_amount = sum(person_list.values())
-print("\nThe total amount contributed by the group: ",group_total_amount,'€')
+else:
+    #Displaying all members in a group and amount entered per user
+    print("\nThe group: ",person_list)
 
-num_of_group_members = len(person_list.keys())
-print("The total number of persons in the group: ",num_of_group_members)
+    group_total_amount = sum(person_list.values())
+    print("\nThe total amount contributed by the group: ",group_total_amount,'€')
 
-#Displaying the average amount to be paid by each user
-avg_amount_to_be_paid_per_user = round(group_total_amount/num_of_group_members,2)
-print("The average gross amount per person in the group: ",avg_amount_to_be_paid_per_user,'€')
+    num_of_group_members = len(person_list.keys())
+    print("The total number of persons in the group: ",num_of_group_members)
 
-person_list_avg_amount = person_list.copy()
-person_list_avg_amount = {person_list_avg_amount:avg_amount_to_be_paid_per_user for person_list_avg_amount in person_list_avg_amount}
-person_list_amount_to_pay_or_receive = {key: round(person_list[key] - person_list_avg_amount.get(key, 0), 2) for key in person_list}
-print("\n")
+    #Displaying the average amount to be paid by each user
+    avg_amount_to_be_paid_per_user = round(group_total_amount/num_of_group_members,2)
+    print("The average gross amount per person in the group: ",avg_amount_to_be_paid_per_user,'€')
+
+    person_list_avg_amount = person_list.copy()
+    person_list_avg_amount = {person_list_avg_amount:avg_amount_to_be_paid_per_user for person_list_avg_amount in person_list_avg_amount}
+    person_list_amount_to_pay_or_receive = {key: round(person_list[key] - person_list_avg_amount.get(key, 0), 2) for key in person_list}
+    print("\n")
 
 
-#Displaying the net balance
-print("Name\t Net balance")
-for key in person_list_amount_to_pay_or_receive:
-    if person_list_amount_to_pay_or_receive[key] < 0:
-        print(key,'owes',person_list_amount_to_pay_or_receive[key],'€')
-    else :
-        print(key,'receives',person_list_amount_to_pay_or_receive[key],'€')
+    #Displaying the net balance
+    print("Name\t Net balance")
+    for key in person_list_amount_to_pay_or_receive:
+        if person_list_amount_to_pay_or_receive[key] < 0:
+            print(key,'owes',person_list_amount_to_pay_or_receive[key],'€')
+        else :
+            print(key,'receives',person_list_amount_to_pay_or_receive[key],'€')
