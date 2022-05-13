@@ -5,11 +5,13 @@ input_activity = True
 #Testing condition for inputs
 while input_activity:
     cont = input("\nDo you want to add a person?\
-        \nType Y to add or N to go ahead with the calculation or end the program: ").upper()
-    if cont == "N":
-        break
-    if cont == "Y":
+        \nType Y to add or N to go ahead with the calculation or end the program: ")
 
+    if cont == "":
+        print("Oops! No input received.")
+        cont = input("Oops! Type Y to add name and amount or type N to end the program: ")
+
+    elif cont == "Y":
         name = input("\nEnter a person's name: ")
         while name == "" or name.isalpha() == False:
             print('\nError! A name cannot be empty nor digits. Input the correct name.')
@@ -22,13 +24,17 @@ while input_activity:
 
         person_list[name] = float(amount_paid)
 
-    if cont != "Y" or cont != "N":
-        input_activity = True
+    elif cont == "N":
+        break
+
+    else:
+        print("Oops! Type Y to add name and amount or type N to end the program: ")
+    
 
 if person_list == {}:
-    print("You did not enter any name and amount.\
-        \nTry again if you want to add an input.\
-        \nThank you for using Sabed Money Split.")
+    print("Oops! You did not enter any name and amount.\
+        \nTry again and type Y if you want to add an input.\
+        \nIf you are ok, then, thank you for using Sabed Money Split.")
 
 else:
     #Displaying all members in a group and amount entered per user
@@ -57,3 +63,6 @@ else:
             print(key,'owes',person_list_amount_to_pay_or_receive[key],'€')
         else :
             print(key,'receives',person_list_amount_to_pay_or_receive[key],'€')
+
+    print("\n")
+    print("Thank you for using Sabed Money Split. See you soon!") 
