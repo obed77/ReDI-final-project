@@ -51,10 +51,18 @@ else:
     print("The average gross amount per person in the group: ",avg_amount_to_be_paid_per_user,'€')
 
     person_list_avg_amount = person_list.copy()
-    person_list_avg_amount = {person_list_avg_amount:avg_amount_to_be_paid_per_user for person_list_avg_amount in person_list_avg_amount}
-    person_list_amount_to_pay_or_receive = {key: round(person_list[key] - person_list_avg_amount.get(key, 0), 2) for key in person_list}
-    print("\n")
 
+    person_list_avg_amount = {
+        person_list_avg_amount:avg_amount_to_be_paid_per_user 
+        for person_list_avg_amount in person_list_avg_amount
+        }
+
+    person_list_amount_to_pay_or_receive = {
+        key: round(person_list[key] - person_list_avg_amount.get(key, 0), 2) 
+        for key in person_list
+        }
+
+    print("\n")
 
     #Displaying the net balance
     print("Name\t\tNet balance")
