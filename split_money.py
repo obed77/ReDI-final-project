@@ -1,6 +1,7 @@
 #Creating an empty dictionary to store users details
 person_list = {}
 input_activity = True
+print("Welcome to Sabed Money Split")
 
 #Testing condition for inputs
 while input_activity:
@@ -8,18 +9,18 @@ while input_activity:
         \nType Y to add or N to go ahead with the calculation or end the program: ")
 
     if cont == "":
-        print("Oops! No input received.")
-        cont = input("Oops! Type Y to add name and amount or type N to end the program: ")
+        print("\nOops! No input received.")
+        break
 
     elif cont == "Y":
         name = input("\nEnter a person's name: ")
-        while name == "" or name.isalpha() == False:
-            print('\nError! A name cannot be empty nor digits. Input the correct name.')
+        while name == "" or not name.isalpha():
+            print('\nError! A name cannot be empty nor alphanumeric. Input the correct name.')
             name = input("\nEnter a correct name: ")
 
         amount_paid = input('\nEnter the amount paid by the person: ')
         while amount_paid == "" or not amount_paid.isdigit():
-            print('\nError! Amount paid cannot be alphabets. Input amount in number format.')
+            print('\nError! Amount paid cannot be alphanumeric nor empty. Input amount in number format.')
             amount_paid = input("\nEnter amount paid in numbers: ")
 
         person_list[name] = float(amount_paid)
@@ -28,13 +29,13 @@ while input_activity:
         break
 
     else:
-        print("Oops! Type Y to add name and amount or type N to end the program: ")
+        print("\nOops! Type Y to add name and amount or type N to end the program: ")
     
 
 if person_list == {}:
     print("Oops! You did not enter any name and amount.\
-        \nTry again and type Y if you want to add an input.\
-        \nIf you are ok, then, thank you for using Sabed Money Split.")
+        \nYou can start the process again.\
+        \nIf you are ok, then, goodbye and thank you for using Sabed Money Split.")
 
 else:
     #Displaying all members in a group and amount entered per user
