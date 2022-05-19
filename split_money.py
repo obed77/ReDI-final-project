@@ -66,12 +66,12 @@ else:
     print("\n")
 
     #Displaying the net balance
-    print("Name\t\tNet balance")
+    print("\x1B[4m" + "Results:" + "\x1B[0m\n")
     for key in person_list_amount_to_pay_or_receive:
         if person_list_amount_to_pay_or_receive[key] < 0:
-            print(key,'\t\towes',abs(person_list_amount_to_pay_or_receive[key]),'€')
+            print(key,'owes',abs(person_list_amount_to_pay_or_receive[key]),'€')
         else :
-            print(key,'\t\treceives',abs(person_list_amount_to_pay_or_receive[key]),'€')
+            print(key,'receives',abs(person_list_amount_to_pay_or_receive[key]),'€')
 
     print("\n")
     print("Thank you for using Sabed Money Split. See you soon!") 
