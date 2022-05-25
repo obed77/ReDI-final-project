@@ -1,12 +1,12 @@
 #Creating an empty dictionary to store users details
 person_list = {}
-input_activity = True
-print("Welcome to Sabed Money Split")
+input_activity = input("\nWelcome to Sabed Money Split.\nDo you want to add a person?\
+        \nType S to start adding or E to end the program: ")
 
 #Testing condition for inputs
-while input_activity:
+while input_activity == "S":
     cont = input("\nDo you want to add a person?\
-        \nType Y to add or N to go ahead with the calculation or end the program: ")
+        \nType Y to add or N to go ahead with the calculation: ")
 
     if cont == "":
         print("\nOops! No input received.")
