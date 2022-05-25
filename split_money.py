@@ -1,7 +1,7 @@
 #Creating an empty dictionary to store users details
 person_list = {}
 input_activity = input("\nWelcome to Sabed Money Split.\nDo you want to add a person?\
-        \nType S to start adding or E to end the program: ")
+        \nType S to start adding or any key other than S to end the program: ")
 
 #Testing condition for inputs
 while input_activity == "S":
